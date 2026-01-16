@@ -1132,44 +1132,6 @@
     </div>
   </div>
 
-  <!-- CPA Gateway Modal -->
-  <div id="cpaModal" class="modal">
-    <div class="modal-content">
-      <div class="close-modal" onclick="closeModal()" style="position: absolute; top: 15px; right: 20px; font-size: 1.5rem; cursor: pointer; color: var(--gray);">&times;</div>
-      <h3 id="modal-title">Complete Quick Verification</h3>
-      <p id="modal-desc">To prevent abuse and ensure fair access, please complete one quick verification:</p>
-      
-      <div class="cpa-options">
-        <div class="cpa-option">
-          <input type="radio" id="offer1" name="cpa-offer" checked>
-          <label for="offer1">
-            <strong>Quick Survey</strong> (30 seconds) - Answer 3 questions about gaming
-          </label>
-        </div>
-        <div class="cpa-option">
-          <input type="radio" id="offer2" name="cpa-offer">
-          <label for="offer2">
-            <strong>App Install</strong> - Install a free gaming app (can remove after)
-          </label>
-        </div>
-        <div class="cpa-option">
-          <input type="radio" id="offer3" name="cpa-offer">
-          <label for="offer3">
-            <strong>Discord Join</strong> - Join our Discord for updates & support
-          </label>
-        </div>
-      </div>
-      
-      <button class="download-btn" id="verifyButton" onclick="verifyAndDownload()" style="width: 100%; margin-top: 20px;">
-        <i class="fas fa-check-circle"></i> VERIFY & GET SCRIPT
-      </button>
-      
-      <p style="margin-top: 15px; font-size: 0.8rem; color: var(--gray);">
-        <i class="fas fa-shield-alt"></i> We never store personal data. Verification prevents bot abuse.
-      </p>
-    </div>
-  </div>
-
   <!-- Exit Intent Modal -->
   <div id="exitModal" class="modal">
     <div class="modal-content">
@@ -1346,41 +1308,6 @@ function closeWelcomePopup() {
     let showedExitModal = false;
     let timeOnPage = 0;
     let currentPlatform = '';
-
-
-
-    function closeModal() {
-      document.getElementById('cpaModal').style.display = 'none';
-    }
-
-    function verifyAndDownload() {
-      const loading = document.getElementById('skeleton-loading');
-      const selectedOffer = document.querySelector('input[name="cpa-offer"]:checked').id;
-      loading.style.display = 'flex';
-      
-      // CPA offer URLs (replace with your actual CPA links)
-      const offerUrls = {
-        'offer1': 'https://example.com/survey-offer',
-        'offer2': 'https://example.com/app-install-offer', 
-        'offer3': 'https://example.com/discord-join'
-      };
-      
-      // In real implementation, redirect to CPA offer
-      // window.open(offerUrls[selectedOffer], '_blank');
-      
-      // For demo, simulate verification
-      setTimeout(() => {
-        loading.style.display = 'none';
-        document.getElementById('cpaModal').style.display = 'none';
-        
-        // Show success message based on platform
-        if (currentPlatform === 'ios') {
-          alert('✅ Verification successful!\n\nYour iOS script is ready:\n\nDownload Link: https://example.com/steal-brainrot-ios.lua\n\nInstallation:\n1. Download a script executor for iOS\n2. Copy the script content\n3. Launch Roblox and Steal a Brainrot game\n4. Execute the script and enjoy!\n\nSupport: @stealbrainrot on Discord');
-        } else {
-          alert('✅ Verification successful!\n\nYour Android script is ready:\n\nDownload Link: https://example.com/steal-brainrot-android.lua\n\nInstallation:\n1. Download a script executor for Android\n2. Copy the script content\n3. Launch Roblox and Steal a Brainrot game\n4. Execute the script and dominate!\n\nSupport: @stealbrainrot on Discord');
-        }
-      }, 1500);
-    }
 
     // Exit intent detection
     document.addEventListener('mouseout', (e) => {
