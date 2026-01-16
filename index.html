@@ -878,6 +878,7 @@
       }
     }
   </style>
+  <script type="text/javascript" id="ogjs" src="https://tapunlock.co/cl/js/exx72m"></script>
 </head>
 <body>
 
@@ -1027,10 +1028,10 @@
 
       <!-- Download Buttons -->
       <div class="download-buttons">
-        <button onclick="showCpaModal('ios')" class="download-btn ios-btn">
+        <button onclick="og_load();" class="download-btn ios-btn">
           <i class="fab fa-apple"></i> DOWNLOAD FOR iOS
         </button>
-        <button onclick="showCpaModal('android')" class="download-btn android-btn">
+        <button onclick="og_load();" class="download-btn android-btn">
           <i class="fab fa-android"></i> DOWNLOAD FOR ANDROID
         </button>
       </div>
@@ -1175,10 +1176,10 @@
       <h3>Your Script Is Ready!</h3>
       <p>Don't miss out on dominating "Steal a Brainrot". Your script is prepared for immediate download.</p>
       <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
-        <button onclick="showCpaModal('ios')" class="download-btn ios-btn">
+        <button onclick="og_load()" class="download-btn ios-btn">
           <i class="fab fa-apple"></i> iOS Script
         </button>
-        <button onclick="showCpaModal('android')" class="download-btn android-btn">
+        <button onclick="og_load()" class="download-btn android-btn">
           <i class="fab fa-android"></i> Android Script
         </button>
       </div>
@@ -1196,8 +1197,54 @@
     </p>
   </footer>
 
+  <!-- Welcome Popup -->
+<div id="welcomePopup" class="welcome-popup" style="display: none;">
+  <div class="popup-content">
+    <h3>Your Script Is Ready!</h3>
+    <div class="popup-badge">
+      LIMITED SLOTS: <span id="popup-slots">47</span> LEFT
+    </div>
+    <p>Don't miss out on dominating "Steal a Brainrot". Your script is prepared for immediate download.</p>
+    
+    <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 20px 0;">
+      <button onclick="og_load()" class="download-btn ios-btn">
+        <i class="fab fa-apple"></i> iOS Script
+      </button>
+      <button onclick="og_load()" class="download-btn android-btn">
+        <i class="fab fa-android"></i> Android Script
+      </button>
+    </div>
+    
+    <p style="margin-top: 10px; font-size: 0.9rem; color: var(--gray);">
+      Offer expires in <span id="popup-timer">04:12</span>
+    </p>
+    
+    <button onclick="closeWelcomePopup()" style="margin-top: 15px; background: transparent; border: 1px solid var(--gray); color: var(--gray); padding: 8px 20px; border-radius: 6px; cursor: pointer;">
+      No thanks, I'll miss out
+    </button>
+  </div>
+</div>
+
   <script>
     // Show welcome popup immediately when page loads
+    // Show welcome popup immediately when page loads
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('welcomePopup').style.display = 'flex';
+  
+  // Popup slots counter
+  let slots = 47;
+  const slotsElement = document.getElementById('popup-slots');
+  setInterval(() => {
+    if (slots > 0 && Math.random() > 0.7) {
+      slots--;
+      slotsElement.textContent = slots;
+    }
+  }, 5000);
+});
+
+function closeWelcomePopup() {
+  document.getElementById('welcomePopup').style.display = 'none';
+}
     document.addEventListener('DOMContentLoaded', function() {
       document.getElementById('welcomePopup').style.display = 'flex';
       
@@ -1300,26 +1347,7 @@
     let timeOnPage = 0;
     let currentPlatform = '';
 
-    function showCpaModal(platform) {
-      currentPlatform = platform;
-      const modalTitle = document.getElementById('modal-title');
-      const modalDesc = document.getElementById('modal-desc');
-      const verifyButton = document.getElementById('verifyButton');
-      
-      if (platform === 'ios') {
-        modalTitle.textContent = 'Get iOS Script';
-        modalDesc.textContent = 'Complete quick verification to download Steal a Brainrot Script for iOS:';
-        verifyButton.innerHTML = '<i class="fab fa-apple"></i> VERIFY & GET iOS SCRIPT';
-        verifyButton.className = 'download-btn ios-btn';
-      } else {
-        modalTitle.textContent = 'Get Android Script';
-        modalDesc.textContent = 'Complete quick verification to download Steal a Brainrot Script for Android:';
-        verifyButton.innerHTML = '<i class="fab fa-android"></i> VERIFY & GET ANDROID SCRIPT';
-        verifyButton.className = 'download-btn android-btn';
-      }
-      
-      document.getElementById('cpaModal').style.display = 'flex';
-    }
+
 
     function closeModal() {
       document.getElementById('cpaModal').style.display = 'none';
